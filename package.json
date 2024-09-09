@@ -1,0 +1,35 @@
+{
+  "name": "tree-sitter-esl",
+  "version": "0.0.1",
+  "description": "Tree sitter grammar for Epidemic Simulation Language (ESL)",
+  "main": "grammar.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tree-sitter test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nssac/tree-sitter-esl.git"
+  },
+  "keywords": [
+    "tree-sitter",
+    "escape",
+    "epidemic",
+    "simulation",
+    "language"
+  ],
+  "author": "Parantapa Bhattacharya <pb@parantapa.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nssac/tree-sitter-esl/issues"
+  },
+  "homepage": "https://github.com/nssac/tree-sitter-esl#readme",
+  "dependencies": {
+    "nan": "^2.20.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.23.0"
+  }
+}
