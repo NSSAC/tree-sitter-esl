@@ -3,11 +3,15 @@
   "version": "0.0.1",
   "description": "Tree sitter grammar for Epidemic Simulation Language (ESL)",
   "main": "grammar.js",
+  "types": "bindings/node",
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "test": "tree-sitter test"
+    "install": "node-gyp-build",
+    "prestart": "tree-sitter build --wasm",
+    "start": "tree-sitter playground",
+    "test": "node --test bindings/node/*_test.js"
   },
   "repository": {
     "type": "git",
@@ -20,6 +24,15 @@
     "simulation",
     "language"
   ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**",
+    "*.wasm"
+  ],
   "author": "Parantapa Bhattacharya <pb@parantapa.net>",
   "license": "MIT",
   "bugs": {
@@ -27,9 +40,25 @@
   },
   "homepage": "https://github.com/nssac/tree-sitter-esl#readme",
   "dependencies": {
-    "nan": "^2.20.0"
+    "node-addon-api": "^8.0.0",
+    "node-gyp-build": "^4.8.1"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.1"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.23.0"
-  }
+    "tree-sitter-cli": "^0.23.0",
+    "prebuildify": "^6.0.1"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.esl",
+      "injection-regex": "^esl$"
+    }
+  ]
 }
