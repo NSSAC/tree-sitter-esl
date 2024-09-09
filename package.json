@@ -33,7 +33,7 @@
     "src/**",
     "*.wasm"
   ],
-  "author": "Parantapa Bhattacharya <pb@parantapa.net>",
+  "author": "Parantapa Bhattacharya <parantapa@virginia.edu>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nssac/tree-sitter-esl/issues"
