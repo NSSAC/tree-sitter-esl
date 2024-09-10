@@ -185,11 +185,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "integer"
-              },
-              {
-                "type": "SYMBOL",
-                "name": "float"
+                "name": "number"
               }
             ]
           }
@@ -472,7 +468,7 @@
           "name": "p",
           "content": {
             "type": "SYMBOL",
-            "name": "_number"
+            "name": "number"
           }
         },
         {
@@ -2841,16 +2837,41 @@
         ]
       }
     },
-    "_number": {
-      "type": "CHOICE",
+    "number": {
+      "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "integer"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "FIELD",
+              "name": "negative",
+              "content": {
+                "type": "STRING",
+                "value": "-"
+              }
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "float"
+          "type": "FIELD",
+          "name": "value",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "integer"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "float"
+              }
+            ]
+          }
         }
       ]
     },

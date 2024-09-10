@@ -6,6 +6,10 @@ config num_ticks: int = 0
 
 config transmissibility: float = 1.0
 
+config transmissibility: float = -1.0
+
+config transmissibility: int = -1
+
 global some_flag: bool = True
 
 global other_flag: bool = False
@@ -16,12 +20,30 @@ global other_flag: bool = False
     (global
         name: (identifier)
         type: (reference (identifier))
-        default: (integer)
+        default: (number
+            value: (integer)
+        )
     )
     (global
         name: (identifier)
         type: (reference (identifier))
-        default: (float)
+        default: (number
+            value: (float)
+        )
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (float)
+        )
+    )
+    (global
+        name: (identifier)
+        type: (reference (identifier))
+        default: (number
+            value: (integer)
+        )
     )
     (global
         name: (identifier)

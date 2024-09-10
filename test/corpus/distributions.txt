@@ -21,22 +21,30 @@ end
         (discrete_dist
             name: (identifier)
             pv: (discrete_pv
-                p: (integer)
+                p: (number
+                    value: (integer)
+                )
                 v: (reference (identifier))
             )
         )
         (discrete_dist
             name: (identifier)
             pv: (discrete_pv
-                p: (integer)
+                p: (number
+                    value: (integer)
+                )
                 v: (integer)
             )
             pv: (discrete_pv
-                p: (integer)
+                p: (number
+                    value: (integer)
+                )
                 v: (float)
             )
             pv: (discrete_pv
-                p: (float)
+                p: (number
+                    value: (float)
+                )
                 v: (reference (identifier))
             )
         )

@@ -530,11 +530,7 @@
         "required": true,
         "types": [
           {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "integer",
+            "type": "number",
             "named": true
           }
         ]
@@ -1117,11 +1113,7 @@
             "named": true
           },
           {
-            "type": "float",
-            "named": true
-          },
-          {
-            "type": "integer",
+            "type": "number",
             "named": true
           }
         ]
@@ -1638,6 +1630,36 @@
           },
           {
             "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "number",
+    "named": true,
+    "fields": {
+      "negative": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "-",
+            "named": false
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "integer",
             "named": true
           }
         ]

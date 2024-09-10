@@ -46,7 +46,7 @@ module.exports = grammar({
             ':',
             field('type', $.reference),
             '=',
-            field('default', choice($.boolean, $.integer, $.float)),
+            field('default', choice($.boolean, $.number)),
             $._terminator,
         ),
 
@@ -111,7 +111,7 @@ module.exports = grammar({
         ),
 
         discrete_pv: $ => seq(
-            'p', '=', field('p', $._number), ',',
+            'p', '=', field('p', $.number), ',',
             'v', '=', field('v', $._expression),
             $._terminator
         ),
@@ -500,7 +500,10 @@ module.exports = grammar({
 
         template_variable: _ => token(seq('{{', /[^}]+/, '}}')),
 
-        _number: $ => choice($.integer, $.float),
+        number: $ => seq(
+          optional(field('negative', '-')),
+          field('value', choice($.integer, $.float))
+        ),
 
         integer: _ => token(repeat1(/[0-9]+/)),
 
