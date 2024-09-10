@@ -1,7 +1,7 @@
 {
   "name": "tree-sitter-esl",
   "version": "0.0.1",
-  "description": "Tree sitter grammar for Epidemic Simulation Language (ESL)",
+  "description": "Tree sitter grammar for Epidemic Simulator Language (ESL)",
   "main": "grammar.js",
   "types": "bindings/node",
   "directories": {
@@ -21,8 +21,7 @@
     "tree-sitter",
     "escape",
     "epidemic",
-    "simulation",
-    "language"
+    "simulation"
   ],
   "files": [
     "grammar.js",

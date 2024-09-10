@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tree-sitter-esl"
-description = "Tree sitter grammar for Epidemic Simulation Language (ESL)"
+description = "Tree sitter grammar for Epidemic Simulator Language (ESL)"
 version = "0.0.1"
 authors = [
   { name="Parantapa Bhattacharya", email="parantapa@virginia.edu" },
