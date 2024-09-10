@@ -116,7 +116,7 @@
 ] @punctuation.special
 
 [
- "enum" "global" "config"
+ "enum" "global" "config" "statistic"
  "node" "edge"
  "distribution" "discrete" "normal" "uniform"
  "p" "v" "mean" "std" "min" "max" "low" "high"

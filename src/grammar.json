@@ -145,6 +145,10 @@
               {
                 "type": "STRING",
                 "value": "config"
+              },
+              {
+                "type": "STRING",
+                "value": "statistic"
               }
             ]
           }

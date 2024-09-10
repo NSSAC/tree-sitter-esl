@@ -41,7 +41,7 @@ module.exports = grammar({
         ),
 
         global: $ => seq(
-            field('category', choice('global', 'config')),
+            field('category', choice('global', 'config', 'statistic')),
             field('name', $.identifier),
             ':',
             field('type', $.reference),

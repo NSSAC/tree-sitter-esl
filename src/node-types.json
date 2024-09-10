@@ -1101,6 +1101,10 @@
           {
             "type": "global",
             "named": false
+          },
+          {
+            "type": "statistic",
+            "named": false
           }
         ]
       },
@@ -3169,6 +3173,10 @@
   },
   {
     "type": "statement",
+    "named": false
+  },
+  {
+    "type": "statistic",
     "named": false
   },
   {
