@@ -7,6 +7,6 @@ final class TreeSitterEslTests: XCTestCase {
         let parser = Parser()
         let language = Language(language: tree_sitter_esl())
         XCTAssertNoThrow(try parser.setLanguage(language),
-                         "Error loading Esl grammar")
+                         "Error loading Epidemic Simulator Language grammar")
     }
 }

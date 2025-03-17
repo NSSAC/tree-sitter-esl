@@ -1,0 +1,40 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "esl",
+      "camelcase": "ESL",
+      "title": "Epidemic Simulator Language",
+      "scope": "source.esl",
+      "file-types": [
+        "esl"
+      ],
+      "injection-regex": "^esl$",
+      "class-name": "TreeSitterEsl"
+    }
+  ],
+  "metadata": {
+    "version": "1.0.0",
+    "license": "MIT",
+    "description": "A domain specific language for creating high performance epidemic simulators.",
+    "authors": [
+      {
+        "name": "Parantapa Bhattacharya",
+        "email": "parantapa@virginia.edu",
+        "url": "https://github.com/parantapa"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/nssac/tree-sitter-esl"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

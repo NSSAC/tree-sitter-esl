@@ -1,4 +1,4 @@
-"""Esl grammar for tree-sitter"""
+"""A domain specific language for creating high performance epidemic simulators."""
 
 from importlib.resources import files as _files
 

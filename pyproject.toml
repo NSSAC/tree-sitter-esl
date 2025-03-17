@@ -1,23 +1,20 @@
 [build-system]
-requires = ["setuptools>=60", "setuptools-scm>=8.0", "wheel"]
+requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "tree-sitter-esl"
-description = "Tree sitter grammar for Epidemic Simulator Language (ESL)"
-version = "0.0.3"
-authors = [
-  { name="Parantapa Bhattacharya", email="parantapa@virginia.edu" },
-]
+description = "A domain specific language for creating high performance epidemic simulators."
+version = "1.0.0"
 keywords = ["incremental", "parsing", "tree-sitter", "esl"]
 classifiers = [
   "Intended Audience :: Developers",
-  "License :: OSI Approved :: MIT License",
   "Topic :: Software Development :: Compilers",
   "Topic :: Text Processing :: Linguistic",
-  "Typing :: Typed"
+  "Typing :: Typed",
 ]
-requires-python = ">=3.9"
+authors = [{ name = "Parantapa Bhattacharya", email = "parantapa@virginia.edu" }]
+requires-python = ">=3.10"
 license.text = "MIT"
 readme = "README.md"
 
@@ -25,8 +22,8 @@ readme = "README.md"
 Homepage = "https://github.com/nssac/tree-sitter-esl"
 
 [project.optional-dependencies]
-core = ["tree-sitter~=0.22"]
+core = ["tree-sitter~=0.24"]
 
 [tool.cibuildwheel]
-build = "cp39-*"
+build = "cp310-*"
 build-frontend = "build"

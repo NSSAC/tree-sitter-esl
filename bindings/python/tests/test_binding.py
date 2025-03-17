@@ -1,6 +1,7 @@
 from unittest import TestCase
 
-import tree_sitter, tree_sitter_esl
+import tree_sitter
+import tree_sitter_esl
 
 
 class TestLanguage(TestCase):
@@ -8,4 +9,4 @@ class TestLanguage(TestCase):
         try:
             tree_sitter.Language(tree_sitter_esl.language())
         except Exception:
-            self.fail("Error loading Esl grammar")
+            self.fail("Error loading Epidemic Simulator Language grammar")
