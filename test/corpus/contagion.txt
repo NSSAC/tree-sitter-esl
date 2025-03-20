@@ -17,9 +17,9 @@ contagion c1
         I => V -> E
     end
 
-    susceptibility c1_susceptibility
-    infectivity c1_infectivity
-    transmissibility c1_transmissibility
+    susceptibility = c1_susceptibility
+    infectivity = c1_infectivity
+    transmissibility = c1_transmissibility
 end
 
 ---

@@ -72,3 +72,29 @@ end
         body: (pass_statement)
     )
 )
+
+=================
+Lambda Function 1
+=================
+
+__test expression:
+    lambda (n) { return n.c1.state == S }
+end
+
+---
+
+(source_file
+    (test_expression
+        (lambda_function
+            parameter: (parameter name: (identifier))
+            body: (return_statement
+                (binary_expression
+                    left: (reference (identifier) (identifier) (identifier))
+                    right: (reference (identifier))
+                )
+            )
+        )
+    )
+)
+
+

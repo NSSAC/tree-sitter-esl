@@ -154,6 +154,7 @@ module.exports = grammar({
 
     contagion_function: $ => seq(
       field('type', choice('susceptibility', 'infectivity', 'transmissibility')),
+      '=',
       field('function', $._expression),
     ),
 
@@ -343,7 +344,7 @@ module.exports = grammar({
 
     test_expression: $ => seq(
       '__test', 'expression', ':',
-      field('expression', $._expression),
+      repeat1($._expression),
       'end'
     ),
 
