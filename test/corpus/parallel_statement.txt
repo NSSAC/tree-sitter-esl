@@ -1,0 +1,135 @@
+====================
+Parallel Statement 1
+====================
+
+__test statement:
+    from node
+    filter some_filter
+    apply some_function
+end
+
+---
+
+(source_file
+    (test_statement
+        (parallel_statement
+            (filter_clause (reference (identifier)))
+            (apply_clause (reference (identifier)))
+        )
+    )
+)
+
+====================
+Parallel Statement 2
+====================
+
+__test statement:
+    from node
+    sample ABSOLUTE 5
+    apply some_function
+end
+
+---
+
+(source_file
+    (test_statement
+        (parallel_statement
+            (sample_clause (integer))
+            (apply_clause (reference (identifier)))
+        )
+    )
+)
+
+====================
+Parallel Statement 3
+====================
+
+__test statement:
+    from node
+    filter some_filter
+    reduce var1 += some_function
+end
+
+---
+
+(source_file
+    (test_statement
+        (parallel_statement
+            (filter_clause (reference (identifier)))
+            (reduce_clause
+                (reference (identifier))
+                (reference (identifier))
+            )
+        )
+    )
+)
+
+====================
+Parallel Statement 4
+====================
+
+__test statement:
+    from node
+    filter some_filter
+    reduce var1 += some_function
+    reduce var2 += some_function
+end
+
+---
+
+(source_file
+    (test_statement
+        (parallel_statement
+            (filter_clause (reference (identifier)))
+            (reduce_clause
+                (reference (identifier))
+                (reference (identifier))
+            )
+            (reduce_clause
+                (reference (identifier))
+                (reference (identifier))
+            )
+        )
+    )
+)
+
+====================
+Parallel Statement 5
+====================
+
+__test statement:
+    from node
+    filter lambda (v: node) -> bool { return v.is_seed }
+    apply lambda (v) { v.c1.state = E }
+end
+
+---
+
+(source_file
+    (test_statement
+        (parallel_statement
+            (filter_clause
+                function: (lambda_function
+                    parameter: (parameter
+                        name: (identifier)
+                        type: (reference (identifier))
+                    )
+                    type: (reference (identifier))
+                    body: (return_statement (reference (identifier) (identifier)))
+                )
+            )
+            (apply_clause
+                function: (lambda_function
+                    parameter: (parameter
+                        name: (identifier)
+                    )
+                    body: (assignment_statement
+                        lvalue: (reference (identifier) (identifier) (identifier))
+                        rvalue: (reference (identifier))
+                    )
+                )
+
+            )
+        )
+    )
+)

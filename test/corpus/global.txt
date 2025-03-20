@@ -1,0 +1,21 @@
+==================
+Global Variables 1
+==================
+
+global HELLO = 1
+
+config WORLD = 10.0
+
+statistic XYZ = False
+
+statistic PQR = HELLO
+
+---
+
+(source_file
+    (global (identifier) (integer))
+    (global (identifier) (float))
+    (global (identifier) (boolean))
+    (global (identifier) (reference (identifier)))
+)
+
