@@ -72,7 +72,7 @@
 [ "return" ] @keyword.return
 [ "while" ] @keyword.repeat
 [
-  "from" "node" "edge"
+  "from"
   "filter" "sample" "apply" "reduce"
 ] @keyword.directive
 (assignment_statement type: (reference) @type)
