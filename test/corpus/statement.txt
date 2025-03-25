@@ -190,3 +190,26 @@ end
     )
 )
 
+================
+Global statement
+================
+
+__test statement:
+    global a
+    global a, b
+end
+
+---
+
+(source_file
+    (test_statement
+        (global_statement
+            name: (identifier)
+        )
+        (global_statement
+            name: (identifier)
+            name: (identifier)
+        )
+    )
+)
+

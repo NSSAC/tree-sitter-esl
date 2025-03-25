@@ -316,6 +316,10 @@
             "named": true
           },
           {
+            "type": "global_statement",
+            "named": true
+          },
+          {
             "type": "if_statement",
             "named": true
           },
@@ -531,6 +535,10 @@
           },
           {
             "type": "call_statement",
+            "named": true
+          },
+          {
+            "type": "global_statement",
             "named": true
           },
           {
@@ -781,6 +789,10 @@
             "named": true
           },
           {
+            "type": "global_statement",
+            "named": true
+          },
+          {
             "type": "if_statement",
             "named": true
           },
@@ -872,6 +884,10 @@
           },
           {
             "type": "call_statement",
+            "named": true
+          },
+          {
+            "type": "global_statement",
             "named": true
           },
           {
@@ -1002,6 +1018,10 @@
           },
           {
             "type": "call_statement",
+            "named": true
+          },
+          {
+            "type": "global_statement",
             "named": true
           },
           {
@@ -1227,6 +1247,22 @@
     }
   },
   {
+    "type": "global_statement",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "if_statement",
     "named": true,
     "fields": {
@@ -1240,6 +1276,10 @@
           },
           {
             "type": "call_statement",
+            "named": true
+          },
+          {
+            "type": "global_statement",
             "named": true
           },
           {
@@ -1354,6 +1394,10 @@
           },
           {
             "type": "call_statement",
+            "named": true
+          },
+          {
+            "type": "global_statement",
             "named": true
           },
           {
@@ -2185,6 +2229,10 @@
           "named": true
         },
         {
+          "type": "global_statement",
+          "named": true
+        },
+        {
           "type": "if_statement",
           "named": true
         },
@@ -2681,6 +2729,10 @@
           },
           {
             "type": "call_statement",
+            "named": true
+          },
+          {
+            "type": "global_statement",
             "named": true
           },
           {
