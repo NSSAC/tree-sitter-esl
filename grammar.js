@@ -229,13 +229,20 @@ module.exports = grammar({
       $.parallel_statement
     ),
 
-    pass_statement: _ => 'pass',
+    pass_statement: _ => seq(
+      'pass',
+      optional(';')
+    ),
 
-    call_statement: $ => $.function_call,
+    call_statement: $ => seq(
+      $.function_call,
+      optional(';')
+    ),
 
     return_statement: $ => seq(
       'return',
       $._expression,
+      optional(';')
     ),
 
     if_statement: $ => seq(
@@ -294,6 +301,7 @@ module.exports = grammar({
       optional(seq(':', field('type', $.reference))),
       '=',
       field('rvalue', $._expression),
+      optional(';')
     ),
 
     update_statement: $ => seq(
@@ -306,6 +314,7 @@ module.exports = grammar({
         '-=',
       )),
       field('rvalue', $._expression),
+      optional(';')
     ),
 
     parallel_statement: $ => seq(
@@ -448,14 +457,11 @@ module.exports = grammar({
     comment: _ => token(seq('#', /.*/)),
 
     _whitespace: _ => /\s/,
-
-    _optional_semicolon: _ => ';'
   },
 
   extras: $ => [
     $.comment,
     $._whitespace,
-    $._optional_semicolon
   ]
 });
 

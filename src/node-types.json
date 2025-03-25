@@ -1785,6 +1785,11 @@
     }
   },
   {
+    "type": "pass_statement",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "reduce_clause",
     "named": true,
     "fields": {
@@ -3030,8 +3035,8 @@
     "named": false
   },
   {
-    "type": "pass_statement",
-    "named": true
+    "type": "pass",
+    "named": false
   },
   {
     "type": "reduce",

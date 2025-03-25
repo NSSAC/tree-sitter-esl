@@ -4,12 +4,14 @@ Pass statement 1
 
 __test statement:
     pass
+    pass ;
 end
 
 ---
 
 (source_file
     (test_statement
+        (pass_statement)
         (pass_statement)
     )
 )
@@ -20,12 +22,18 @@ Call statement 1
 
 __test statement:
     susceptibility()
+    susceptibility() ;
 end
 
 ---
 
 (source_file
     (test_statement
+        (call_statement
+            (function_call
+                (reference (identifier))
+            )
+        )
         (call_statement
             (function_call
                 (reference (identifier))

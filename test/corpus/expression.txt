@@ -7,6 +7,10 @@ __test expression:
 end
 
 __test expression:
+    a.b
+end
+
+__test expression:
     1
 end
 
@@ -35,6 +39,9 @@ end
 (source_file
     (test_expression
         (reference (identifier))
+    )
+    (test_expression
+        (reference (identifier) (identifier))
     )
     (test_expression
         (integer)

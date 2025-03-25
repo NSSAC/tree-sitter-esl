@@ -1221,12 +1221,46 @@
       ]
     },
     "pass_statement": {
-      "type": "STRING",
-      "value": "pass"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "pass"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "call_statement": {
-      "type": "SYMBOL",
-      "name": "function_call"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "function_call"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
     },
     "return_statement": {
       "type": "SEQ",
@@ -1238,6 +1272,18 @@
         {
           "type": "SYMBOL",
           "name": "_expression"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -1551,6 +1597,18 @@
             "type": "SYMBOL",
             "name": "_expression"
           }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -1601,6 +1659,18 @@
             "type": "SYMBOL",
             "name": "_expression"
           }
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ";"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         }
       ]
     },
@@ -2699,10 +2769,6 @@
     "_whitespace": {
       "type": "PATTERN",
       "value": "\\s"
-    },
-    "_optional_semicolon": {
-      "type": "STRING",
-      "value": ";"
     }
   },
   "extras": [
@@ -2713,10 +2779,6 @@
     {
       "type": "SYMBOL",
       "name": "_whitespace"
-    },
-    {
-      "type": "SYMBOL",
-      "name": "_optional_semicolon"
     }
   ],
   "conflicts": [],
