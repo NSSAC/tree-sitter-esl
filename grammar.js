@@ -224,7 +224,6 @@ module.exports = grammar({
       $.if_statement,
       $.switch_statement,
       $.while_loop,
-      $.global_statement,
       $.assignment_statement,
       $.update_statement,
       $.parallel_statement
@@ -295,12 +294,6 @@ module.exports = grammar({
       ':',
       field('body', repeat1($._statement)),
       'end'
-    ),
-
-    global_statement: $ => seq(
-      'global',
-      commaSep1(field('name', $.identifier)),
-      optional(';')
     ),
 
     assignment_statement: $ => seq(
