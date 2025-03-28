@@ -22,7 +22,7 @@
 (edge_field
   name: (identifier) @variable.member
   type: (reference) @type
-  (node_annotation)* @annotation
+  (edge_annotation)* @annotation
 )
 
 [ "distribution" ] @keyword
