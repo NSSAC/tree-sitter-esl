@@ -1730,13 +1730,16 @@
               "name": "apply_clause"
             },
             {
-              "type": "REPEAT1",
-              "content": {
-                "type": "SYMBOL",
-                "name": "reduce_clause"
-              }
+              "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "reduce_clause"
+          }
         }
       ]
     },
@@ -2482,6 +2485,10 @@
         ]
       }
     },
+    "identifier": {
+      "type": "PATTERN",
+      "value": "[a-zA-Z][_a-zA-Z0-9]*"
+    },
     "reference": {
       "type": "SEQ",
       "members": [
@@ -2506,10 +2513,6 @@
           }
         }
       ]
-    },
-    "identifier": {
-      "type": "PATTERN",
-      "value": "[a-zA-Z][_a-zA-Z0-9]*"
     },
     "integer": {
       "type": "TOKEN",

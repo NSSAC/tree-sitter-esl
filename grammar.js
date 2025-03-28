@@ -412,9 +412,9 @@ module.exports = grammar({
       ')'
     )),
 
-    reference: $ => dotSep1($.identifier),
-
     identifier: _ => /[a-zA-Z][_a-zA-Z0-9]*/,
+
+    reference: $ => dotSep1($.identifier),
 
     integer: _ => token(repeat1(/[0-9]+/)),
 
