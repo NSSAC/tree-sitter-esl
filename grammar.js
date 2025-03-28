@@ -321,10 +321,8 @@ module.exports = grammar({
       'from', field('table', choice('node', 'edge')),
       optional($.filter_clause),
       optional($.sample_clause),
-      choice(
-        $.apply_clause,
-        repeat1($.reduce_clause)
-      ),
+      optional($.apply_clause),
+      repeat($.reduce_clause)
     ),
 
     filter_clause: $ => seq(
