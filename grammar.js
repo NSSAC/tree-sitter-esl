@@ -46,10 +46,8 @@ module.exports = grammar({
     global: $ => seq(
       field('category', choice('global', 'config', 'statistic')),
       field('name', $.identifier),
-      optional(seq(
-        ':',
-        field('type', $.reference)
-      )),
+      ':',
+      field('type', $.identifier),
       '=',
       field('default', $._expression),
     ),
@@ -63,7 +61,7 @@ module.exports = grammar({
     node_field: $ => seq(
       field('name', $.identifier),
       ':',
-      field('type', $.reference),
+      field('type', $.identifier),
       field('annotation', repeat($.node_annotation)),
     ),
 
@@ -82,7 +80,7 @@ module.exports = grammar({
     edge_field: $ => seq(
       field('name', $.identifier),
       ':',
-      field('type', $.reference),
+      field('type', $.identifier),
       field('annotation', repeat($.edge_annotation)),
     ),
 
@@ -149,13 +147,13 @@ module.exports = grammar({
 
     contagion_state_type: $ => seq(
       alias(/state\s+type/, 'state type'),
-      field('type', $.reference),
+      field('type', $.identifier),
     ),
 
     contagion_function: $ => seq(
       field('type', choice('susceptibility', 'infectivity', 'transmissibility')),
       '=',
-      field('function', $._expression),
+      field('function', $._lambda_or_expression),
     ),
 
     transitions: $ => seq(
@@ -167,8 +165,8 @@ module.exports = grammar({
     transition: $ => seq(
       field('entry', $.reference), '->',
       field('exit', $.reference), ',',
-      optional(seq('p', '=', field('p', $._expression), ',')),
-      'dwell', '=', field('dwell', $._expression),
+      optional(seq('p', '=', field('p', $._lambda_or_expression), ',')),
+      'dwell', '=', field('dwell', $._lambda_or_expression),
     ),
 
     transmissions: $ => seq(
@@ -189,26 +187,32 @@ module.exports = grammar({
       '(',
       field('parameter', commaSep($.parameter)),
       ')',
-      optional(seq('->', field('type', $.reference))),
+      optional(seq('->', field('type', $.identifier))),
       ':',
       field('body', repeat1($._statement)),
       'end'
     ),
 
+    parameter: $ => seq(
+      field('name', $.identifier),
+      ':',
+      field('type', $.identifier)
+    ),
+
     lambda_function: $ => seq(
       'lambda',
       '(',
-      field('parameter', commaSep($.parameter)),
+      field('parameter', commaSep($.lambda_parameter)),
       ')',
-      optional(seq('->', field('type', $.reference))),
+      optional(seq('->', field('type', $.identifier))),
       '{',
       field('body', repeat1($._statement)),
       '}'
     ),
 
-    parameter: $ => seq(
+    lambda_parameter: $ => seq(
       field('name', $.identifier),
-      optional(seq(':', field('type', $.reference)))
+      optional(seq(':', field('type', $.identifier)))
     ),
 
     test_statement: $ => seq(
@@ -298,7 +302,7 @@ module.exports = grammar({
 
     assignment_statement: $ => seq(
       field('lvalue', $.reference),
-      optional(seq(':', field('type', $.reference))),
+      optional(seq(':', field('type', $.identifier))),
       '=',
       field('rvalue', $._expression),
       optional(';')
@@ -327,18 +331,18 @@ module.exports = grammar({
 
     filter_clause: $ => seq(
       'filter',
-      field('function', $._expression)
+      field('function', $._lambda_or_expression)
     ),
 
     sample_clause: $ => seq(
       'sample',
       field('type', choice('ABSOLUTE', 'RELATIVE')),
-      field('amount', $._expression),
+      field('amount', $._lambda_or_expression),
     ),
 
     apply_clause: $ => seq(
       'apply',
-      field('function', $._expression)
+      field('function', $._lambda_or_expression)
     ),
 
     reduce_clause: $ => seq(
@@ -346,14 +350,16 @@ module.exports = grammar({
       field('lvalue', $.reference),
       field('operator', choice('+', '*',)),
       '=',
-      field('function', $._expression)
+      field('function', $._lambda_or_expression)
     ),
 
     test_expression: $ => seq(
       '__test', 'expression', ':',
-      repeat1($._expression),
+      repeat1($._lambda_or_expression),
       'end'
     ),
+
+    _lambda_or_expression: $ => choice($.lambda_function, $._expression),
 
     _expression: $ => choice(
       $.integer,
@@ -365,7 +371,6 @@ module.exports = grammar({
       $.binary_expression,
       $.parenthesized_expression,
       $.function_call,
-      $.lambda_function,
     ),
 
     unary_expression: $ => prec.left(PREC.UNARY, seq(

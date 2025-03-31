@@ -99,8 +99,8 @@ Parallel Statement 5
 
 __test statement:
     from node
-    filter lambda (v: node) -> bool { return v.is_seed }
-    apply lambda (v) { v.c1.state = E }
+    filter lambda (v: node) -> bool { pass }
+    apply lambda (v) { pass }
 end
 
 ---
@@ -110,25 +110,21 @@ end
         (parallel_statement
             (filter_clause
                 function: (lambda_function
-                    parameter: (parameter
+                    parameter: (lambda_parameter
                         name: (identifier)
-                        type: (reference (identifier))
+                        type: (identifier)
                     )
-                    type: (reference (identifier))
-                    body: (return_statement (reference (identifier) (identifier)))
+                    type: (identifier)
+                    body: (pass_statement)
                 )
             )
             (apply_clause
                 function: (lambda_function
-                    parameter: (parameter
+                    parameter: (lambda_parameter
                         name: (identifier)
                     )
-                    body: (assignment_statement
-                        lvalue: (reference (identifier) (identifier) (identifier))
-                        rvalue: (reference (identifier))
-                    )
+                    body: (pass_statement)
                 )
-
             )
         )
     )

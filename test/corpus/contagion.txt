@@ -28,7 +28,7 @@ end
     (contagion
         name: (identifier)
         body: (contagion_state_type
-            type: (reference (identifier))
+            type: (identifier)
         )
         body: (transitions
             body: (transition

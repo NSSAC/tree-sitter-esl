@@ -8,20 +8,20 @@
 ["global" "config" "statistic"] @keyword
 (global
   name: (identifier) @variable
-  type: (reference)? @type
+  type: (identifier) @type
 )
 
 ["node"] @keyword
 (node_field
   name: (identifier) @variable.member
-  type: (reference) @type
+  type: (identifier) @type
   (node_annotation)* @annotation
 )
 
 ["edge"] @keyword
 (edge_field
   name: (identifier) @variable.member
-  type: (reference) @type
+  type: (identifier) @type
   (edge_annotation)* @annotation
 )
 
@@ -55,14 +55,19 @@
 [ "def" "lambda" ] @keyword
 (function
   name: (identifier) @function
-  type: (reference)? @type
-)
-(lambda_function
-  type: (reference)? @type
+  type: (identifier) @type
 )
 (parameter
   name: (identifier) @variable.parameter
-  type: (reference)? @type
+  type: (identifier) @type
+)
+
+(lambda_function
+  type: (identifier)? @type
+)
+(lambda_parameter
+  name: (identifier) @variable.parameter
+  type: (identifier)? @type
 )
 
 [
@@ -75,7 +80,7 @@
   "from"
   "filter" "sample" "apply" "reduce"
 ] @keyword.directive
-(assignment_statement type: (reference) @type)
+(assignment_statement type: (identifier) @type)
 
 [ "ABSOLUTE" "RELATIVE" ] @constant.builtin
 

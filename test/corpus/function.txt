@@ -3,7 +3,7 @@ Function 1
 ==========
 
 def func(a: int, b: float) -> float:
-    return 1.0
+    pass
 end
 
 ---
@@ -13,14 +13,14 @@ end
         name: (identifier)
         parameter: (parameter
             name: (identifier)
-            type: (reference (identifier))
+            type: (identifier)
         )
         parameter: (parameter
             name: (identifier)
-            type: (reference (identifier))
+            type: (identifier)
         )
-        type: (reference (identifier))
-        body: (return_statement (float))
+        type: (identifier)
+        body: (pass_statement)
     )
 )
 
@@ -28,31 +28,8 @@ end
 Function 2
 ==========
 
-def func(a, b):
-    return 1.0
-end
-
----
-
-(source_file
-    (function
-        name: (identifier)
-        parameter: (parameter
-            name: (identifier)
-        )
-        parameter: (parameter
-            name: (identifier)
-        )
-        body: (return_statement (float))
-    )
-)
-
-==========
-Function 3
-==========
-
 def func() -> int:
-    return 1
+    pass
 end
 
 def func():
@@ -64,8 +41,8 @@ end
 (source_file
     (function
         name: (identifier)
-        type: (reference (identifier))
-        body: (return_statement (integer))
+        type: (identifier)
+        body: (pass_statement)
     )
     (function
         name: (identifier)
@@ -78,7 +55,7 @@ Lambda Function 1
 =================
 
 __test expression:
-    lambda (n) { return n.c1.state == S }
+    lambda (n) { pass }
 end
 
 ---
@@ -86,13 +63,10 @@ end
 (source_file
     (test_expression
         (lambda_function
-            parameter: (parameter name: (identifier))
-            body: (return_statement
-                (binary_expression
-                    left: (reference (identifier) (identifier) (identifier))
-                    right: (reference (identifier))
-                )
+            parameter: (lambda_parameter
+                name: (identifier)
             )
+            body: (pass_statement)
         )
     )
 )
