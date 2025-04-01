@@ -2,20 +2,36 @@
 Global Variables 1
 ==================
 
-global HELLO = 1
+global HELLO: int = 1
 
-config WORLD = 10.0
+config WORLD: float = 10.0
 
-statistic XYZ = False
+statistic XYZ: bool = False
 
-statistic PQR = HELLO
+statistic PQR: int = HELLO
 
 ---
 
 (source_file
-    (global (identifier) (integer))
-    (global (identifier) (float))
-    (global (identifier) (boolean))
-    (global (identifier) (reference (identifier)))
+    (global
+        name: (identifier)
+        type: (identifier)
+        default: (integer)
+    )
+    (global
+        name: (identifier)
+        type: (identifier)
+        default: (float)
+    )
+    (global
+        name: (identifier)
+        type: (identifier)
+        default: (boolean)
+    )
+    (global
+        name: (identifier)
+        type: (identifier)
+        default: (reference (identifier))
+    )
 )
 
