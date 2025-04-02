@@ -337,7 +337,7 @@ module.exports = grammar({
     sample_clause: $ => seq(
       'sample',
       field('type', choice('ABSOLUTE', 'RELATIVE')),
-      field('amount', $._lambda_or_expression),
+      field('amount', $._expression),
     ),
 
     apply_clause: $ => seq(

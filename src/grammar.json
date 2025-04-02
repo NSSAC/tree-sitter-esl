@@ -1801,7 +1801,7 @@
           "name": "amount",
           "content": {
             "type": "SYMBOL",
-            "name": "_lambda_or_expression"
+            "name": "_expression"
           }
         }
       ]
