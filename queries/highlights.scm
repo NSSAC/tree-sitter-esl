@@ -55,7 +55,7 @@
 [ "def" "lambda" ] @keyword
 (function
   name: (identifier) @function
-  type: (identifier) @type
+  type: (identifier)? @type
 )
 (parameter
   name: (identifier) @variable.parameter
