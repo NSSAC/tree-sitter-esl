@@ -26,7 +26,7 @@
           },
           {
             "type": "SYMBOL",
-            "name": "distributions"
+            "name": "cdist"
           },
           {
             "type": "SYMBOL",
@@ -334,49 +334,12 @@
         ]
       }
     },
-    "distributions": {
+    "cdist": {
       "type": "SEQ",
       "members": [
         {
           "type": "STRING",
-          "value": "distribution"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_distribution"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "end"
-        }
-      ]
-    },
-    "_distribution": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "discrete_dist"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "normal_dist"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "uniform_dist"
-        }
-      ]
-    },
-    "discrete_dist": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "discrete"
+          "value": "cdist"
         },
         {
           "type": "FIELD",
@@ -387,235 +350,56 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "pv",
+          "type": "REPEAT1",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "discrete_pv"
-            }
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "end"
-        }
-      ]
-    },
-    "discrete_pv": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "p"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "p",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ","
-        },
-        {
-          "type": "STRING",
-          "value": "v"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "v",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        }
-      ]
-    },
-    "normal_dist": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "normal"
-        },
-        {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "mean"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "mean",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ","
-        },
-        {
-          "type": "STRING",
-          "value": "std"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "std",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ","
-                },
-                {
-                  "type": "STRING",
-                  "value": "min"
-                },
-                {
-                  "type": "STRING",
-                  "value": "="
-                },
-                {
-                  "type": "FIELD",
-                  "name": "min",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_expression"
-                  }
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": "p"
+              },
+              {
+                "type": "STRING",
+                "value": "="
+              },
+              {
+                "type": "FIELD",
+                "name": "probability",
+                "content": {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "integer"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "float"
+                    }
+                  ]
                 }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": ","
-                },
-                {
-                  "type": "STRING",
-                  "value": "max"
-                },
-                {
-                  "type": "STRING",
-                  "value": "="
-                },
-                {
-                  "type": "FIELD",
-                  "name": "max",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_expression"
-                  }
+              },
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "STRING",
+                "value": "v"
+              },
+              {
+                "type": "STRING",
+                "value": "="
+              },
+              {
+                "type": "FIELD",
+                "name": "value",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "_expression"
                 }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "end"
-        }
-      ]
-    },
-    "uniform_dist": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "STRING",
-          "value": "uniform"
-        },
-        {
-          "type": "FIELD",
-          "name": "name",
-          "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "low"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "low",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ","
-        },
-        {
-          "type": "STRING",
-          "value": "high"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "high",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_expression"
+              }
+            ]
           }
         },
         {
@@ -705,6 +489,24 @@
             "type": "CHOICE",
             "members": [
               {
+                "type": "ALIAS",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "transition\\s+probability"
+                },
+                "named": false,
+                "value": "transition probability"
+              },
+              {
+                "type": "ALIAS",
+                "content": {
+                  "type": "PATTERN",
+                  "value": "dwell\\s+time"
+                },
+                "named": false,
+                "value": "dwell time"
+              },
+              {
                 "type": "STRING",
                 "value": "susceptibility"
               },
@@ -778,59 +580,6 @@
           "content": {
             "type": "SYMBOL",
             "name": "reference"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ","
-        },
-        {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SEQ",
-              "members": [
-                {
-                  "type": "STRING",
-                  "value": "p"
-                },
-                {
-                  "type": "STRING",
-                  "value": "="
-                },
-                {
-                  "type": "FIELD",
-                  "name": "p",
-                  "content": {
-                    "type": "SYMBOL",
-                    "name": "_lambda_or_expression"
-                  }
-                },
-                {
-                  "type": "STRING",
-                  "value": ","
-                }
-              ]
-            },
-            {
-              "type": "BLANK"
-            }
-          ]
-        },
-        {
-          "type": "STRING",
-          "value": "dwell"
-        },
-        {
-          "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "dwell",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_lambda_or_expression"
           }
         }
       ]
@@ -1105,23 +854,41 @@
           ]
         },
         {
-          "type": "STRING",
-          "value": "{"
-        },
-        {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT1",
-            "content": {
-              "type": "SYMBOL",
-              "name": "_statement"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "{"
+                },
+                {
+                  "type": "FIELD",
+                  "name": "body",
+                  "content": {
+                    "type": "REPEAT1",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_statement"
+                    }
+                  }
+                },
+                {
+                  "type": "STRING",
+                  "value": "}"
+                }
+              ]
+            },
+            {
+              "type": "FIELD",
+              "name": "return_expression",
+              "content": {
+                "type": "SYMBOL",
+                "name": "_expression"
+              }
             }
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "}"
+          ]
         }
       ]
     },

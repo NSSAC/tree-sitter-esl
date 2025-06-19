@@ -129,3 +129,40 @@ end
         )
     )
 )
+
+====================
+Parallel Statement 6
+====================
+
+__test statement:
+    from node
+    filter lambda (v: node) -> bool True
+    apply lambda (v) { pass }
+end
+
+---
+
+(source_file
+    (test_statement
+        (parallel_statement
+            (filter_clause
+                function: (lambda_function
+                    parameter: (lambda_parameter
+                        name: (identifier)
+                        type: (identifier)
+                    )
+                    type: (identifier)
+                    return_expression: (boolean)
+                )
+            )
+            (apply_clause
+                function: (lambda_function
+                    parameter: (lambda_parameter
+                        name: (identifier)
+                    )
+                    body: (pass_statement)
+                )
+            )
+        )
+    )
+)

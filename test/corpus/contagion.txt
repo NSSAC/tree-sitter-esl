@@ -6,8 +6,8 @@ contagion c1
     state type c1_state_t
 
     transition
-        E -> I, p = p_E_I , dwell = fixed1
-        I -> R, dwell = normal1
+        E -> I
+        I -> R
     end
 
     transmission
@@ -16,6 +16,9 @@ contagion c1
         I => S -> E
         I => V -> E
     end
+
+    transition probability = c1_trans_prob
+    dwell time = c1_dwell_time
 
     susceptibility = c1_susceptibility
     infectivity = c1_infectivity
@@ -34,13 +37,10 @@ end
             body: (transition
                 entry: (reference (identifier))
                 exit: (reference (identifier))
-                p: (reference (identifier))
-                dwell: (reference (identifier))
             )
             body: (transition
                 entry: (reference (identifier))
                 exit: (reference (identifier))
-                dwell: (reference (identifier))
             )
         )
         body: (transmissions
@@ -65,6 +65,10 @@ end
                 exit: (reference (identifier))
             )
         )
+
+        body: (contagion_function function: (reference (identifier)))
+        body: (contagion_function function: (reference (identifier)))
+
         body: (contagion_function function: (reference (identifier)))
         body: (contagion_function function: (reference (identifier)))
         body: (contagion_function function: (reference (identifier)))

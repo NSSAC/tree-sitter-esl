@@ -1,0 +1,33 @@
+=================
+Categorical Dist 1
+=================
+
+cdist fixed1
+    p = 1, v = var1
+end
+
+cdist fixed1
+    p = 1, v = 1
+    p = 1, v = 2.0
+    p = 0.5, v = var2
+end
+
+---
+
+(source_file
+    (cdist
+        name: (identifier)
+        probability: (integer)
+        value: (reference (identifier))
+    )
+    (cdist
+        name: (identifier)
+        probability: (integer)
+        value: (integer)
+        probability: (integer)
+        value: (float)
+        probability: (float)
+        value: (reference (identifier))
+    )
+)
+

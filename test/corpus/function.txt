@@ -71,4 +71,26 @@ end
     )
 )
 
+=================
+Lambda Function 2
+=================
 
+__test expression:
+    lambda (n) n.a
+end
+
+---
+
+(source_file
+    (test_expression
+        (lambda_function
+            parameter: (lambda_parameter
+                name: (identifier)
+            )
+            return_expression: (reference
+                (identifier)
+                (identifier)
+            )
+        )
+    )
+)

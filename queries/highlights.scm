@@ -25,22 +25,8 @@
   (edge_annotation)* @annotation
 )
 
-[ "distribution" ] @keyword
-(discrete_dist
-  ["discrete" ] @keyword
-  name: (identifier) @function
-)
-(discrete_pv ["p" "v"] @parameter.builtin)
-(normal_dist
-  ["normal"] @keyword
-  name: (identifier) @function
-  ["mean" "std" "min" "max"] @parameter.builtin
-)
-(uniform_dist
-  ["uniform"] @keyword
-  name: (identifier) @function
-  ["low" "high"] @parameter.builtin
-)
+[ "cdist" ] @keyword
+[ "p" "v" ] @attribute
 
 [ "contagion"
   "transition"
@@ -49,8 +35,8 @@
 [
   "state type"
   "susceptibility" "infectivity" "transmissibility"
+  "transition probability" "dwell time"
 ] @attribute
-(transition ["p" "dwell"] @attribute)
 
 [ "def" "lambda" ] @keyword
 (function

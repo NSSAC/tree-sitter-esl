@@ -29,7 +29,7 @@ module.exports = grammar({
       $.global,
       $.node,
       $.edge,
-      $.distributions,
+      $.cdist,
       $.contagion,
       $.function,
       $.test_statement,
@@ -91,45 +91,13 @@ module.exports = grammar({
       'save'
     )),
 
-    distributions: $ => seq(
-      'distribution',
-      repeat($._distribution),
-      'end'
-    ),
-
-    _distribution: $ => choice(
-      $.discrete_dist,
-      $.normal_dist,
-      $.uniform_dist
-    ),
-
-    discrete_dist: $ => seq(
-      'discrete',
+    cdist: $ => seq(
+      'cdist',
       field('name', $.identifier),
-      field('pv', repeat($.discrete_pv)),
-      'end'
-    ),
-
-    discrete_pv: $ => seq(
-      'p', '=', field('p', $._expression), ',',
-      'v', '=', field('v', $._expression),
-    ),
-
-    normal_dist: $ => seq(
-      'normal',
-      field('name', $.identifier),
-      'mean', '=', field('mean', $._expression), ',',
-      'std', '=', field('std', $._expression),
-      optional(seq(',', 'min', '=', field('min', $._expression))),
-      optional(seq(',', 'max', '=', field('max', $._expression))),
-      'end'
-    ),
-
-    uniform_dist: $ => seq(
-      'uniform',
-      field('name', $.identifier),
-      'low', '=', field('low', $._expression), ',',
-      'high', '=', field('high', $._expression),
+      repeat1(seq(
+        'p', '=', field('probability', choice($.integer, $.float)), ',',
+        'v', '=', field('value', $._expression)
+      )),
       'end'
     ),
 
@@ -151,7 +119,11 @@ module.exports = grammar({
     ),
 
     contagion_function: $ => seq(
-      field('type', choice('susceptibility', 'infectivity', 'transmissibility')),
+      field('type', choice(
+        alias(/transition\s+probability/, 'transition probability'),
+        alias(/dwell\s+time/, 'dwell time'),
+        'susceptibility', 'infectivity', 'transmissibility'
+      )),
       '=',
       field('function', $._lambda_or_expression),
     ),
@@ -164,9 +136,7 @@ module.exports = grammar({
 
     transition: $ => seq(
       field('entry', $.reference), '->',
-      field('exit', $.reference), ',',
-      optional(seq('p', '=', field('p', $._lambda_or_expression), ',')),
-      'dwell', '=', field('dwell', $._lambda_or_expression),
+      field('exit', $.reference), 
     ),
 
     transmissions: $ => seq(
@@ -205,9 +175,10 @@ module.exports = grammar({
       field('parameter', commaSep($.lambda_parameter)),
       ')',
       optional(seq('->', field('type', $.identifier))),
-      '{',
-      field('body', repeat1($._statement)),
-      '}'
+      choice(
+        seq('{', field('body', repeat1($._statement)), '}'),
+        field('return_expression', $._expression)
+      )
     ),
 
     lambda_parameter: $ => seq(
