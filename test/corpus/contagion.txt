@@ -2,9 +2,7 @@
 Contagion 1
 ===========
 
-contagion c1
-    state type c1_state_t
-
+contagion c1 : c1_state_t
     transition
         E -> I
         I -> R
@@ -30,48 +28,37 @@ end
 (source_file
     (contagion
         name: (identifier)
-        body: (contagion_state_type
-            type: (identifier)
+        type: (identifier)
+        transitions: (transitions
+            entry: (reference (identifier))
+            exit: (reference (identifier))
+            entry: (reference (identifier))
+            exit: (reference (identifier))
         )
-        body: (transitions
-            body: (transition
-                entry: (reference (identifier))
-                exit: (reference (identifier))
-            )
-            body: (transition
-                entry: (reference (identifier))
-                exit: (reference (identifier))
-            )
-        )
-        body: (transmissions
-            body: (transmission
-                contact: (reference (identifier))
-                entry: (reference (identifier))
-                exit: (reference (identifier))
-            )
-            body: (transmission
-                contact: (reference (identifier))
-                entry: (reference (identifier))
-                exit: (reference (identifier))
-            )
-            body: (transmission
-                contact: (reference (identifier))
-                entry: (reference (identifier))
-                exit: (reference (identifier))
-            )
-            body: (transmission
-                contact: (reference (identifier))
-                entry: (reference (identifier))
-                exit: (reference (identifier))
-            )
+        transmissions: (transmissions
+            contact: (reference (identifier))
+            entry: (reference (identifier))
+            exit: (reference (identifier))
+            
+            contact: (reference (identifier))
+            entry: (reference (identifier))
+            exit: (reference (identifier))
+
+            contact: (reference (identifier))
+            entry: (reference (identifier))
+            exit: (reference (identifier))
+            
+            contact: (reference (identifier))
+            entry: (reference (identifier))
+            exit: (reference (identifier))
         )
 
-        body: (contagion_function function: (reference (identifier)))
-        body: (contagion_function function: (reference (identifier)))
+        transition_probability: (reference (identifier))
+        dwell_time: (reference (identifier))
 
-        body: (contagion_function function: (reference (identifier)))
-        body: (contagion_function function: (reference (identifier)))
-        body: (contagion_function function: (reference (identifier)))
+        susceptibility: (reference (identifier))
+        infectivity: (reference (identifier))
+        transmissibility: (reference (identifier))
     )
 )
 

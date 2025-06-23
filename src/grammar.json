@@ -424,50 +424,8 @@
           }
         },
         {
-          "type": "FIELD",
-          "name": "body",
-          "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "contagion_state_type"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "contagion_function"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "transitions"
-                },
-                {
-                  "type": "SYMBOL",
-                  "name": "transmissions"
-                }
-              ]
-            }
-          }
-        },
-        {
           "type": "STRING",
-          "value": "end"
-        }
-      ]
-    },
-    "contagion_state_type": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "ALIAS",
-          "content": {
-            "type": "PATTERN",
-            "value": "state\\s+type"
-          },
-          "named": false,
-          "value": "state type"
+          "value": ":"
         },
         {
           "type": "FIELD",
@@ -476,62 +434,149 @@
             "type": "SYMBOL",
             "name": "identifier"
           }
-        }
-      ]
-    },
-    "contagion_function": {
-      "type": "SEQ",
-      "members": [
+        },
         {
-          "type": "FIELD",
-          "name": "type",
+          "type": "REPEAT",
           "content": {
             "type": "CHOICE",
             "members": [
               {
-                "type": "ALIAS",
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "transition\\s+probability"
+                    },
+                    "named": false,
+                    "value": "transition probability"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "="
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "transition_probability",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_lambda_or_expression"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "ALIAS",
+                    "content": {
+                      "type": "PATTERN",
+                      "value": "dwell\\s+time"
+                    },
+                    "named": false,
+                    "value": "dwell time"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "="
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "dwell_time",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_lambda_or_expression"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "susceptibility"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "="
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "susceptibility",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_lambda_or_expression"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "infectivity"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "="
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "infectivity",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_lambda_or_expression"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "STRING",
+                    "value": "transmissibility"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "="
+                  },
+                  {
+                    "type": "FIELD",
+                    "name": "transmissibility",
+                    "content": {
+                      "type": "SYMBOL",
+                      "name": "_lambda_or_expression"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "FIELD",
+                "name": "transitions",
                 "content": {
-                  "type": "PATTERN",
-                  "value": "transition\\s+probability"
-                },
-                "named": false,
-                "value": "transition probability"
+                  "type": "SYMBOL",
+                  "name": "transitions"
+                }
               },
               {
-                "type": "ALIAS",
+                "type": "FIELD",
+                "name": "transmissions",
                 "content": {
-                  "type": "PATTERN",
-                  "value": "dwell\\s+time"
-                },
-                "named": false,
-                "value": "dwell time"
-              },
-              {
-                "type": "STRING",
-                "value": "susceptibility"
-              },
-              {
-                "type": "STRING",
-                "value": "infectivity"
-              },
-              {
-                "type": "STRING",
-                "value": "transmissibility"
+                  "type": "SYMBOL",
+                  "name": "transmissions"
+                }
               }
             ]
           }
         },
         {
           "type": "STRING",
-          "value": "="
-        },
-        {
-          "type": "FIELD",
-          "name": "function",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_lambda_or_expression"
-          }
+          "value": "end"
         }
       ]
     },
@@ -543,44 +588,36 @@
           "value": "transition"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "REPEAT1",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "transition"
-            }
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "entry",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "reference"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": "->"
+              },
+              {
+                "type": "FIELD",
+                "name": "exit",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "reference"
+                }
+              }
+            ]
           }
         },
         {
           "type": "STRING",
           "value": "end"
-        }
-      ]
-    },
-    "transition": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "entry",
-          "content": {
-            "type": "SYMBOL",
-            "name": "reference"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "->"
-        },
-        {
-          "type": "FIELD",
-          "name": "exit",
-          "content": {
-            "type": "SYMBOL",
-            "name": "reference"
-          }
         }
       ]
     },
@@ -592,56 +629,48 @@
           "value": "transmission"
         },
         {
-          "type": "FIELD",
-          "name": "body",
+          "type": "REPEAT1",
           "content": {
-            "type": "REPEAT",
-            "content": {
-              "type": "SYMBOL",
-              "name": "transmission"
-            }
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "FIELD",
+                "name": "contact",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "reference"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": "=>"
+              },
+              {
+                "type": "FIELD",
+                "name": "entry",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "reference"
+                }
+              },
+              {
+                "type": "STRING",
+                "value": "->"
+              },
+              {
+                "type": "FIELD",
+                "name": "exit",
+                "content": {
+                  "type": "SYMBOL",
+                  "name": "reference"
+                }
+              }
+            ]
           }
         },
         {
           "type": "STRING",
           "value": "end"
-        }
-      ]
-    },
-    "transmission": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "FIELD",
-          "name": "contact",
-          "content": {
-            "type": "SYMBOL",
-            "name": "reference"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "=>"
-        },
-        {
-          "type": "FIELD",
-          "name": "entry",
-          "content": {
-            "type": "SYMBOL",
-            "name": "reference"
-          }
-        },
-        {
-          "type": "STRING",
-          "value": "->"
-        },
-        {
-          "type": "FIELD",
-          "name": "exit",
-          "content": {
-            "type": "SYMBOL",
-            "name": "reference"
-          }
         }
       ]
     },

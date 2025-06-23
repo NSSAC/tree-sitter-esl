@@ -104,51 +104,53 @@ module.exports = grammar({
     contagion: $ => seq(
       'contagion',
       field('name', $.identifier),
-      field('body', repeat(choice(
-        $.contagion_state_type,
-        $.contagion_function,
-        $.transitions,
-        $.transmissions,
-      ))),
-      'end'
-    ),
-
-    contagion_state_type: $ => seq(
-      alias(/state\s+type/, 'state type'),
+      ':',
       field('type', $.identifier),
-    ),
 
-    contagion_function: $ => seq(
-      field('type', choice(
-        alias(/transition\s+probability/, 'transition probability'),
-        alias(/dwell\s+time/, 'dwell time'),
-        'susceptibility', 'infectivity', 'transmissibility'
+      repeat(choice(
+        seq(
+          alias(/transition\s+probability/, 'transition probability'), '=',
+          field('transition_probability', $._lambda_or_expression)
+        ),
+        seq(
+          alias(/dwell\s+time/, 'dwell time'), '=',
+          field('dwell_time', $._lambda_or_expression)
+        ),
+        seq(
+          'susceptibility', '=',
+          field('susceptibility', $._lambda_or_expression)
+        ),
+        seq(
+          'infectivity', '=',
+          field('infectivity', $._lambda_or_expression)
+        ),
+        seq(
+          'transmissibility', '=',
+          field('transmissibility', $._lambda_or_expression)
+        ),
+        field('transitions', $.transitions),
+        field('transmissions', $.transmissions),
       )),
-      '=',
-      field('function', $._lambda_or_expression),
+      'end'
     ),
 
     transitions: $ => seq(
       'transition',
-      field('body', repeat($.transition)),
+      repeat1(seq(
+        field('entry', $.reference), '->',
+        field('exit', $.reference),
+      )),
       'end'
-    ),
-
-    transition: $ => seq(
-      field('entry', $.reference), '->',
-      field('exit', $.reference), 
     ),
 
     transmissions: $ => seq(
       'transmission',
-      field('body', repeat($.transmission)),
+      repeat1(seq(
+        field('contact', $.reference), '=>',
+        field('entry', $.reference), '->',
+        field('exit', $.reference),
+      )),
       'end'
-    ),
-
-    transmission: $ => seq(
-      field('contact', $.reference), '=>',
-      field('entry', $.reference), '->',
-      field('exit', $.reference),
     ),
 
     function: $ => seq(

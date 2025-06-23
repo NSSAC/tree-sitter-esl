@@ -453,47 +453,9 @@
     "type": "contagion",
     "named": true,
     "fields": {
-      "body": {
+      "dwell_time": {
         "multiple": true,
         "required": false,
-        "types": [
-          {
-            "type": "contagion_function",
-            "named": true
-          },
-          {
-            "type": "contagion_state_type",
-            "named": true
-          },
-          {
-            "type": "transitions",
-            "named": true
-          },
-          {
-            "type": "transmissions",
-            "named": true
-          }
-        ]
-      },
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "contagion_function",
-    "named": true,
-    "fields": {
-      "function": {
-        "multiple": false,
-        "required": true,
         "types": [
           {
             "type": "binary_expression",
@@ -537,38 +499,220 @@
           }
         ]
       },
-      "type": {
+      "infectivity": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "reference",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "name": {
         "multiple": false,
         "required": true,
         "types": [
           {
-            "type": "dwell time",
-            "named": false
-          },
-          {
-            "type": "infectivity",
-            "named": false
-          },
-          {
-            "type": "susceptibility",
-            "named": false
-          },
-          {
-            "type": "transition probability",
-            "named": false
-          },
-          {
-            "type": "transmissibility",
-            "named": false
+            "type": "identifier",
+            "named": true
           }
         ]
-      }
-    }
-  },
-  {
-    "type": "contagion_state_type",
-    "named": true,
-    "fields": {
+      },
+      "susceptibility": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "reference",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "transition_probability": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "reference",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "transitions": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "transitions",
+            "named": true
+          }
+        ]
+      },
+      "transmissibility": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "float",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "lambda_function",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "reference",
+            "named": true
+          },
+          {
+            "type": "string",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "transmissions": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "transmissions",
+            "named": true
+          }
+        ]
+      },
       "type": {
         "multiple": false,
         "required": true,
@@ -1969,63 +2113,11 @@
     }
   },
   {
-    "type": "transition",
-    "named": true,
-    "fields": {
-      "entry": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
-      "exit": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
     "type": "transitions",
     "named": true,
     "fields": {
-      "body": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "transition",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "transmission",
-    "named": true,
-    "fields": {
-      "contact": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "reference",
-            "named": true
-          }
-        ]
-      },
       "entry": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -2035,7 +2127,7 @@
         ]
       },
       "exit": {
-        "multiple": false,
+        "multiple": true,
         "required": true,
         "types": [
           {
@@ -2050,12 +2142,32 @@
     "type": "transmissions",
     "named": true,
     "fields": {
-      "body": {
+      "contact": {
         "multiple": true,
-        "required": false,
+        "required": true,
         "types": [
           {
-            "type": "transmission",
+            "type": "reference",
+            "named": true
+          }
+        ]
+      },
+      "entry": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "reference",
+            "named": true
+          }
+        ]
+      },
+      "exit": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "reference",
             "named": true
           }
         ]
@@ -2561,10 +2673,6 @@
   },
   {
     "type": "sample",
-    "named": false
-  },
-  {
-    "type": "state type",
     "named": false
   },
   {

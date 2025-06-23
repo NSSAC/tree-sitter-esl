@@ -33,7 +33,6 @@
   "transmission"
 ] @keyword
 [
-  "state type"
   "susceptibility" "infectivity" "transmissibility"
   "transition probability" "dwell time"
 ] @attribute
