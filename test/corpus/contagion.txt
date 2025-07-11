@@ -29,25 +29,30 @@ end
     (contagion
         name: (identifier)
         type: (identifier)
-        transitions: (transitions
-            entry: (reference (identifier))
-            exit: (reference (identifier))
+        (transition
             entry: (reference (identifier))
             exit: (reference (identifier))
         )
-        transmissions: (transmissions
+        (transition
+            entry: (reference (identifier))
+            exit: (reference (identifier))
+        )
+        (transmission
             contact: (reference (identifier))
             entry: (reference (identifier))
             exit: (reference (identifier))
-            
+        )
+        (transmission
             contact: (reference (identifier))
             entry: (reference (identifier))
             exit: (reference (identifier))
-
+        )
+        (transmission
             contact: (reference (identifier))
             entry: (reference (identifier))
             exit: (reference (identifier))
-            
+        )
+        (transmission
             contact: (reference (identifier))
             entry: (reference (identifier))
             exit: (reference (identifier))

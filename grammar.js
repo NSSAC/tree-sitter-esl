@@ -117,29 +117,35 @@ module.exports = grammar({
           'transmissibility', '=',
           field('transmissibility', $._lambda_or_expression)
         ),
-        field('transitions', $.transitions),
-        field('transmissions', $.transmissions),
+
+        seq(
+          'transition',
+          repeat1($.transition),
+          'end'
+        ),
+
+        seq(
+          'transmission',
+          repeat1($.transmission),
+          'end'
+        ),
       )),
       'end'
     ),
 
-    transitions: $ => seq(
-      'transition',
-      repeat1(seq(
+    transition: $ => seq(
+      seq(
         field('entry', $.reference), '->',
         field('exit', $.reference),
-      )),
-      'end'
+      ),
     ),
 
-    transmissions: $ => seq(
-      'transmission',
-      repeat1(seq(
+    transmission: $ => seq(
+      seq(
         field('contact', $.reference), '=>',
         field('entry', $.reference), '->',
         field('exit', $.reference),
-      )),
-      'end'
+      ),
     ),
 
     function: $ => seq(

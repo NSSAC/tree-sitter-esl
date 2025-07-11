@@ -575,16 +575,6 @@
           }
         ]
       },
-      "transitions": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "transitions",
-            "named": true
-          }
-        ]
-      },
       "transmissibility": {
         "multiple": true,
         "required": false,
@@ -631,16 +621,6 @@
           }
         ]
       },
-      "transmissions": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": "transmissions",
-            "named": true
-          }
-        ]
-      },
       "type": {
         "multiple": false,
         "required": true,
@@ -651,6 +631,20 @@
           }
         ]
       }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "transition",
+          "named": true
+        },
+        {
+          "type": "transmission",
+          "named": true
+        }
+      ]
     }
   },
   {
@@ -2037,11 +2031,11 @@
     }
   },
   {
-    "type": "transitions",
+    "type": "transition",
     "named": true,
     "fields": {
       "entry": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -2051,7 +2045,7 @@
         ]
       },
       "exit": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -2063,11 +2057,11 @@
     }
   },
   {
-    "type": "transmissions",
+    "type": "transmission",
     "named": true,
     "fields": {
       "contact": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -2077,7 +2071,7 @@
         ]
       },
       "entry": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
@@ -2087,7 +2081,7 @@
         ]
       },
       "exit": {
-        "multiple": true,
+        "multiple": false,
         "required": true,
         "types": [
           {
