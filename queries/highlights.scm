@@ -25,9 +25,6 @@
   (edge_annotation)* @annotation
 )
 
-[ "cdist" ] @keyword
-[ "p" "v" ] @attribute
-
 [ "contagion"
   "transition"
   "transmission"

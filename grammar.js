@@ -29,7 +29,6 @@ module.exports = grammar({
       $.global,
       $.node,
       $.edge,
-      $.cdist,
       $.contagion,
       $.function,
       $.test_statement,
@@ -90,16 +89,6 @@ module.exports = grammar({
       'static',
       'save'
     )),
-
-    cdist: $ => seq(
-      'cdist',
-      field('name', $.identifier),
-      repeat1(seq(
-        'p', '=', field('probability', choice($.integer, $.float)), ',',
-        'v', '=', field('value', $._expression)
-      )),
-      'end'
-    ),
 
     contagion: $ => seq(
       'contagion',
