@@ -98,11 +98,11 @@ module.exports = grammar({
 
       repeat(choice(
         seq(
-          alias(/transition\s+probability/, 'transition probability'), '=',
-          field('transition_probability', $._lambda_or_expression)
+          'transition_rate', '=',
+          field('transition_rate', $._lambda_or_expression)
         ),
         seq(
-          alias(/dwell\s+time/, 'dwell time'), '=',
+          'dwell_time', '=',
           field('dwell_time', $._lambda_or_expression)
         ),
         seq(

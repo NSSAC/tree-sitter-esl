@@ -30,8 +30,8 @@
   "transmission"
 ] @keyword
 [
+  "transition_rate" "dwell_time"
   "susceptibility" "infectivity" "transmissibility"
-  "transition probability" "dwell time"
 ] @attribute
 
 [ "def" "lambda" ] @keyword
@@ -83,26 +83,11 @@
 (comment) @comment
 
 [
- "+"
- "-"
- "*"
- "/"
- "%"
- "or"
- "and"
- "not"
- "=="
- "!="
- ">"
-">="
- "<="
- "<"
+ "+" "-" "*" "/" "%"
+ "or" "and" "not"
+ "==" "!=" ">" ">=" "<=" "<"
  "="
- "*="
- "/="
- "%="
- "+="
- "-="
+ "*=" "/=" "%=" "+=" "-="
 ] @operator
 
 [

@@ -529,7 +529,7 @@
           }
         ]
       },
-      "transition_probability": {
+      "transition_rate": {
         "multiple": true,
         "required": false,
         "types": [
@@ -2492,7 +2492,7 @@
     "named": false
   },
   {
-    "type": "dwell time",
+    "type": "dwell_time",
     "named": false
   },
   {
@@ -2616,7 +2616,7 @@
     "named": false
   },
   {
-    "type": "transition probability",
+    "type": "transition_rate",
     "named": false
   },
   {

@@ -15,8 +15,8 @@ contagion c1 : c1_state_t
         I => V -> E
     end
 
-    transition probability = c1_trans_prob
-    dwell time = c1_dwell_time
+    transition_rate = c1_trans_prob
+    dwell_time = c1_dwell_time
 
     susceptibility = c1_susceptibility
     infectivity = c1_infectivity
@@ -53,7 +53,7 @@ end
             exit: (reference (identifier))
         )
 
-        transition_probability: (reference (identifier))
+        transition_rate: (reference (identifier))
         dwell_time: (reference (identifier))
 
         susceptibility: (reference (identifier))

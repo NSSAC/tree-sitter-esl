@@ -366,13 +366,8 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "PATTERN",
-                      "value": "transition\\s+probability"
-                    },
-                    "named": false,
-                    "value": "transition probability"
+                    "type": "STRING",
+                    "value": "transition_rate"
                   },
                   {
                     "type": "STRING",
@@ -380,7 +375,7 @@
                   },
                   {
                     "type": "FIELD",
-                    "name": "transition_probability",
+                    "name": "transition_rate",
                     "content": {
                       "type": "SYMBOL",
                       "name": "_lambda_or_expression"
@@ -392,13 +387,8 @@
                 "type": "SEQ",
                 "members": [
                   {
-                    "type": "ALIAS",
-                    "content": {
-                      "type": "PATTERN",
-                      "value": "dwell\\s+time"
-                    },
-                    "named": false,
-                    "value": "dwell time"
+                    "type": "STRING",
+                    "value": "dwell_time"
                   },
                   {
                     "type": "STRING",
