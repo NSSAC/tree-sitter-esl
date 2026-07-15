@@ -2010,6 +2010,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -3005,7 +3006,8 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "config",
@@ -3197,7 +3199,8 @@
   },
   {
     "type": "template_block",
-    "named": true
+    "named": true,
+    "extra": true
   },
   {
     "type": "template_variable",
