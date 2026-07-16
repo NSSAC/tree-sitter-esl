@@ -1,0 +1,6 @@
+{
+    project: "tree-sitter-esl",
+    remotes: {
+        rivanna: "rivanna:tree-sitter-esl",
+    }
+}
